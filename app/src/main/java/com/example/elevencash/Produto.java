@@ -11,21 +11,29 @@ public class Produto implements Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_produto")
     private int idProduto;
+
     @ColumnInfo(name = "quantidade_produto")
     private int quantidadeProduto;
+
     @ColumnInfo(name = "preco_produto")
-    private int precoProduto;
+    private double precoProduto;
+
     @ColumnInfo(name = "nome_produto")
     private String nomeProduto;
+
     @ColumnInfo(name = "imagem_produto")
     private int imagemProduto;
 
-    public Produto(int idProduto, int quantidadeProduto, int precoProduto, String nomeProduto, int imagemProduto) {
-        this.idProduto = idProduto;
-        this.quantidadeProduto = quantidadeProduto;
+    @ColumnInfo(name = "categoria_produto")
+    private int categoriaProduto; //1 = madeira; 2 = peixe; 3 = minérios
+
+    public Produto(double precoProduto, String nomeProduto, int imagemProduto, int categoriaProduto) {
+        this.idProduto = 0;
+        this.quantidadeProduto = 0;
         this.precoProduto = precoProduto;
         this.nomeProduto = nomeProduto;
         this.imagemProduto = imagemProduto;
+        this.categoriaProduto = categoriaProduto;
     }
 
     public int getIdProduto() {
@@ -44,7 +52,7 @@ public class Produto implements Serializable {
         this.quantidadeProduto = quantidadeProduto;
     }
 
-    public int getPrecoProduto() {
+    public double getPrecoProduto() {
         return precoProduto;
     }
 
@@ -66,5 +74,13 @@ public class Produto implements Serializable {
 
     public void setImagemProduto(int imagemProduto) {
         this.imagemProduto = imagemProduto;
+    }
+
+    public int getCategoriaProduto() {
+        return categoriaProduto;
+    }
+
+    public void setCategoriaProduto(int categoriaProduto) {
+        this.categoriaProduto = categoriaProduto;
     }
 }

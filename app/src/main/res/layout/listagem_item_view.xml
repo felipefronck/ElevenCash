@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="2dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        app:cardElevation="6dp">
+        app:layout_constraintTop_toBottomOf="@id/chipGroup">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/nomeProduto"
@@ -20,23 +21,22 @@
                 android:layout_height="wrap_content"
                 android:text="NomePlaceHolder"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="15dp" />
+                android:layout_margin="15dp"
+                android:singleLine="true"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/imgCardLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="6dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 app:cardCornerRadius="10dp"
-                android:layout_below="@id/nomeProduto">
+                android:layout_below="@id/nomeProduto"
+                android:layout_margin="4dp">
 
                 <ImageView
                     android:id="@+id/imgProduto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher_round"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher_round"/>
 
             </androidx.cardview.widget.CardView>
 

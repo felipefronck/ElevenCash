@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#4d1691</color>
-    <color name="cinzaEscuro">	#A9A9A9</color>
+    <color name="cinzaEscuro">#D6D7D7</color>
     <color name="cor_fundo_btn_home">#E5E4E2</color>
     <color name="transparent">#00FFFFFF</color>
 </resources>
