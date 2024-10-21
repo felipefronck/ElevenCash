@@ -11,20 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    List<String> nomes;
-    List<Integer> imagens;
-    List<Double> precos;
-    LayoutInflater layoutInflater;
+    private ArrayList<Produto> produtos;
+    private LayoutInflater layoutInflater;
+    private ProdutoDatabase produtoDb;
 
-    public Adapter(List<String> nomes, List<Integer> imagens, List<Double> precos, Context context) {
-        this.nomes = nomes;
-        this.imagens = imagens;
-        this.precos = precos;
+    public Adapter(ArrayList<Produto> produtos, Context context, ProdutoDatabase produtoDb) {
+        this.produtos = (produtos != null) ? produtos : new ArrayList<>();
         this.layoutInflater = LayoutInflater.from(context);
+        this.produtoDb = produtoDb;
     }
 
     @NonNull
@@ -36,12 +35,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        Produto produto = produtos.get(position);
+        holder.nomeProduto.setText(produto.getNomeProduto());
+        holder.imgProduto.setImageResource(produto.getImagemProduto());
+        holder.precoProduto.setText(String.valueOf(produto.getPrecoProduto()));
     }
 
     @Override
     public int getItemCount() {
-        return precos.size();
+        return produtos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
