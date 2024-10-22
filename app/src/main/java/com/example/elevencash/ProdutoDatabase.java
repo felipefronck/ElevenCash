@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Produto.class}, version = 1, exportSchema = false)
+@Database(entities = {Produto.class}, version = 2, exportSchema = false)
 public abstract class ProdutoDatabase extends RoomDatabase {
 
     public abstract ProdutoDao produtoDao();
@@ -24,10 +24,11 @@ public abstract class ProdutoDatabase extends RoomDatabase {
             synchronized (ProdutoDatabase.class){
                 if (instance == null){
                     appContext = context.getApplicationContext();
-                   instance = Room.databaseBuilder(appContext,
-                           ProdutoDatabase.class, "produto_database")
-                           .addCallback(roomDatabaseCallback)
-                           .build();
+                    instance = Room.databaseBuilder(appContext,
+                                    ProdutoDatabase.class, "produto_database")
+                            .fallbackToDestructiveMigration()
+                            .addCallback(roomDatabaseCallback)
+                            .build();
                 }
             }
         }

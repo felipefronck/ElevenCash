@@ -19,11 +19,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private ArrayList<Produto> produtos;
     private LayoutInflater layoutInflater;
     private ProdutoDatabase produtoDb;
+    private Carrinho carrinho;
 
-    public Adapter(ArrayList<Produto> produtos, Context context, ProdutoDatabase produtoDb) {
+    public Adapter(ArrayList<Produto> produtos, Context context, ProdutoDatabase produtoDb, Carrinho carrinho) {
         this.produtos = (produtos != null) ? produtos : new ArrayList<>();
         this.layoutInflater = LayoutInflater.from(context);
         this.produtoDb = produtoDb;
+        this.carrinho = carrinho;
     }
 
     @NonNull
@@ -38,7 +40,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         Produto produto = produtos.get(position);
         holder.nomeProduto.setText(produto.getNomeProduto());
         holder.imgProduto.setImageResource(produto.getImagemProduto());
-        holder.precoProduto.setText(String.valueOf(produto.getPrecoProduto()));
+        holder.precoProduto.setText("$" + String.valueOf(produto.getPrecoProduto()));
+
+        holder.btnAddProduto.setOnClickListener(view -> {
+            carrinho.adicionarProduto(produto);
+            holder.qntdProduto.setText(String.valueOf(carrinho.getQuantidadeDeProdutos()));
+        });
+
+        holder.btnRemoveProduto.setOnClickListener(view -> {
+            carrinho.removerProduto(produto);
+            holder.qntdProduto.setText(String.valueOf(carrinho.getQuantidadeDeProdutos()));
+        });
     }
 
     @Override
